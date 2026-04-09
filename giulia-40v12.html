@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giulia Dijon — 40</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4f1ec;
+  --bg-alt: #e9e4dc;
+  --ink: #1a1e2e;
+  --ink-mid: #4a4e5e;
+  --ink-light: #8a8d9a;
+  --ink-faint: #b8bac4;
+  --accent: #d4622a;
+  --accent-hover: #b8511e;
+  --accent-light: #f0c8a8;
+  --navy: #1c2545;
+  --navy-deep: #111832;
+  --sky: #8fb5c9;
+  --sky-light: #c8dde8;
+  --sunset: #e0a472;
+  --tag-music: #d4622a;
+  --tag-food: #c49520;
+  --tag-wellness: #3a8a7a;
+  --tag-fun: #6e5b99;
+  --tag-party: #d44a3a;
+  --card: #fff;
+  --border: rgba(28,37,69,0.06);
+  --border-mid: rgba(28,37,69,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--ink);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(244,241,236,0.9);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+nav .logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:var(--ink)}
+nav ul{display:flex;gap:2rem;list-style:none}
+nav ul a{font-size:0.78rem;text-decoration:none;color:var(--ink-light);text-transform:uppercase;letter-spacing:0.14em;font-weight:500;transition:color 0.3s}
+nav ul a:hover{color:var(--accent)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:20px;height:1.5px;background:var(--ink);margin:4px 0}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 4rem 4rem;position:relative;background:linear-gradient(180deg, #c8dde8 0%, #e0cdb8 30%, #d4bfa8 50%, #8fb5c9 70%, var(--navy) 100%);color:#fff}
+.hero-left{opacity:0;animation:fadeUp 1s ease .2s forwards}
+.hero-eyebrow{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.3em;color:rgba(255,255,255,.7);font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:rgba(255,255,255,.4)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,8vw,7.5rem);font-weight:400;line-height:.92;margin-bottom:1.5rem;color:#fff}
+.hero h1 em{font-style:italic;color:var(--sunset);text-shadow:0 2px 20px rgba(224,164,114,.3)}
+.hero-tagline{font-size:1.15rem;color:rgba(255,255,255,.8);font-weight:300;line-height:1.65;max-width:420px;margin-bottom:2.5rem}
+.hero-tagline strong{font-weight:500;color:#fff}
+.hero-meta{display:flex;gap:1.8rem;font-size:0.85rem;color:rgba(255,255,255,.6);font-weight:400}
+.hero-meta span{display:flex;align-items:center;gap:0.35rem}
+.hero-right{display:flex;justify-content:center;align-items:center;opacity:0;animation:fadeUp 1s ease .5s forwards}
+
+/* COUNTDOWN — single row */
+.countdown{display:flex;gap:1rem}
+.cd-box{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:1.6rem 1.4rem;text-align:center;min-width:90px;transition:transform .3s,box-shadow .3s;backdrop-filter:blur(10px)}
+.cd-box:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.cd-num{font-family:'JetBrains Mono',monospace;font-size:2.6rem;font-weight:400;line-height:1;display:block;color:#fff}
+.cd-label{font-size:.58rem;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.5);margin-top:.4rem;display:block;font-weight:500}
+
+/* SECTIONS */
+section{padding:6rem 2.5rem;max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:var(--accent);font-weight:600;margin-bottom:.7rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:400;margin-bottom:.7rem;line-height:1.12}
+.section-subtitle{color:var(--ink-mid);font-size:1.05rem;font-weight:300;margin-bottom:2.5rem;max-width:520px;line-height:1.6}
+.divider{width:100%;height:1px;background:var(--border);max-width:1100px;margin:0 auto}
+
+/* FILTERS */
+.program-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.filter-btn{font-family:'Manrope',sans-serif;font-size:.78rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;padding:.55rem 1.2rem;border-radius:100px;border:1px solid var(--border-mid);background:transparent;color:var(--ink-light);cursor:pointer;transition:all .25s}
+.filter-btn:hover{border-color:var(--ink-mid);color:var(--ink)}
+.filter-btn.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filter-btn[data-cat="music"].active{background:var(--tag-music);border-color:var(--tag-music);color:#fff}
+.filter-btn[data-cat="food"].active{background:var(--tag-food);border-color:var(--tag-food);color:#fff}
+.filter-btn[data-cat="wellness"].active{background:var(--tag-wellness);border-color:var(--tag-wellness);color:#fff}
+.filter-btn[data-cat="fun"].active{background:var(--tag-fun);border-color:var(--tag-fun);color:#fff}
+.filter-btn[data-cat="party"].active{background:var(--tag-party);border-color:var(--tag-party);color:#fff}
+
+/* PROGRAM */
+.program-day{margin-bottom:3.5rem}
+.program-day-header{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;margin-bottom:.15rem}
+.program-day-tagline{font-size:.9rem;color:var(--ink-light);margin-bottom:1.6rem;font-style:italic}
+.program-item{display:flex;gap:1.5rem;padding:.8rem 0;border-bottom:1px solid var(--border);align-items:baseline;transition:all .3s}
+.program-item.hidden{display:none}
+.program-item:hover{padding-left:.5rem}
+.program-time{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--ink-light);min-width:120px;flex-shrink:0}
+.program-desc{font-size:1rem;font-weight:400}
+.tag{display:inline-block;font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;padding:.2em .65em;border-radius:100px;margin-left:.4rem;vertical-align:middle;font-weight:600}
+.tag-music{background:rgba(212,98,42,.1);color:var(--tag-music)}
+.tag-food{background:rgba(196,149,32,.1);color:var(--tag-food)}
+.tag-wellness{background:rgba(58,138,122,.1);color:var(--tag-wellness)}
+.tag-fun{background:rgba(110,91,153,.1);color:var(--tag-fun)}
+.tag-party{background:rgba(212,74,58,.12);color:var(--tag-party)}
+.program-special{margin-top:1.2rem;padding:1rem 1.3rem;background:var(--bg-alt);border-radius:8px;border-left:3px solid var(--accent);font-size:.95rem}
+.program-special strong{font-weight:600}
+
+/* TRACKER */
+.tracker-section{background:var(--navy-deep);color:var(--bg);padding:5rem 2.5rem;max-width:100%;margin:0}
+.tracker-section .section-label{color:var(--sky)}
+.tracker-section .section-title{color:#fff}
+.tracker-section .section-subtitle{color:rgba(200,221,232,.5)}
+.tracker-inner{max-width:1100px;margin:0 auto}
+.tracker-status{display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;font-size:.9rem}
+.tracker-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite}
+.tracker-dot.off{background:var(--ink-mid);animation:none}
+.tracker-status-text{color:rgba(200,221,232,.5)}
+.tracker-time{font-family:'JetBrains Mono',monospace;color:var(--sky);margin-left:auto;font-size:.82rem}
+
+/* TRACKER TABLE — single row per drink */
+.tracker-table{width:100%;border-collapse:collapse}
+.tracker-table tr{border-bottom:1px solid rgba(143,181,201,.08)}
+.tracker-table tr:last-child{border-bottom:none}
+.tracker-table td{padding:.85rem 0;vertical-align:middle}
+.tt-emoji{width:36px;font-size:1.2rem;text-align:center}
+.tt-name{font-size:.95rem;font-weight:400;color:rgba(200,221,232,.7);padding-left:.5rem;min-width:130px}
+.tt-bar-cell{width:50%;padding:0 1.5rem}
+.tt-bar-outer{width:100%;height:6px;background:rgba(143,181,201,.1);border-radius:3px;overflow:hidden}
+.tt-bar-inner{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--sky),var(--sunset));transition:width .6s ease;width:0%}
+.tt-val{font-family:'JetBrains Mono',monospace;font-size:.95rem;color:#fff;text-align:right;min-width:55px}
+.tt-max{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:rgba(143,181,201,.3);text-align:right;min-width:65px;padding-left:.3rem}
+
+.tracker-total{margin-top:2rem;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 0;border-top:1px solid rgba(143,181,201,.1)}
+.tracker-total-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(200,221,232,.45);font-weight:500}
+.tracker-total-pct{font-family:'JetBrains Mono',monospace;font-size:1.6rem;color:#fff;font-weight:400}
+
+.tracker-bar-wrap{margin-top:1rem;padding:1.2rem 0}
+.tracker-bar-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(200,221,232,.4);margin-bottom:.8rem;font-weight:500}
+.tracker-bar-outer-total{width:100%;height:20px;background:rgba(143,181,201,.08);border-radius:10px;overflow:hidden}
+.tracker-bar-inner-total{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--sky),var(--sunset),var(--accent));transition:width .6s ease;width:0%}
+.tracker-bar-pct-inline{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:rgba(200,221,232,.6);margin-top:.5rem;text-align:right;display:block}
+
+/* CONSIGLI */
+.consigli-split{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.consigli-live-header{font-family:'Cormorant Garamond',serif;font-size:1.4rem;margin-bottom:1rem;font-weight:400}
+.live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:.3rem;animation:pulse 2s infinite}
+.consigli-ticker{height:400px;overflow:hidden;border-radius:10px;background:var(--card);border:1px solid var(--border-mid)}
+.consigli-ticker-inner{animation:tickerScroll 30s linear infinite;padding:.8rem}
+.ticker-card{padding:1.1rem 1.2rem;margin-bottom:.7rem;background:var(--bg);border-radius:6px;border-left:2px solid var(--accent)}
+.ticker-card .tc-author{font-weight:600;font-size:.88rem;color:var(--accent);margin-bottom:.2rem}
+.ticker-card .tc-text{font-size:.98rem;line-height:1.5;font-weight:300}
+.ticker-card .tc-time{font-size:.7rem;color:var(--ink-faint);margin-top:.3rem;font-family:'JetBrains Mono',monospace}
+.bacheca-form{display:flex;flex-direction:column;gap:.7rem}
+.bacheca-form input,.bacheca-form textarea{font-family:'Manrope',sans-serif;font-size:1rem;padding:.9rem 1.1rem;border:1px solid var(--border-mid);border-radius:6px;background:var(--card);color:var(--ink);outline:none;transition:border-color .3s;font-weight:300}
+.bacheca-form input:focus,.bacheca-form textarea:focus{border-color:var(--accent)}
+.bacheca-form textarea{min-height:85px;resize:vertical}
+.bacheca-form button{align-self:flex-start;font-family:'Manrope',sans-serif;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;padding:.9rem 2.2rem;background:var(--accent);color:#fff;border:none;border-radius:5px;cursor:pointer;transition:all .3s}
+.bacheca-form button:hover{background:var(--accent-hover);transform:translateY(-1px)}
+
+/* NEWSLETTER */
+.newsletter-section{background:var(--navy);padding:5rem 2.5rem;max-width:100%;margin:0;text-align:center;color:#fff}
+.newsletter-section .section-label{color:var(--sky)}
+.newsletter-section .section-title{margin-bottom:.7rem;color:#fff}
+.newsletter-section .section-subtitle{margin:0 auto 2rem;color:rgba(200,221,232,.55)}
+.newsletter-form{display:flex;gap:.6rem;max-width:460px;margin:0 auto}
+.newsletter-form input{flex:1;font-family:'Manrope',sans-serif;font-size:1rem;padding:.95rem 1.2rem;border:1px solid rgba(143,181,201,.2);border-radius:5px;background:rgba(255,255,255,.06);color:#fff;outline:none;transition:border-color .3s;font-weight:300}
+.newsletter-form input::placeholder{color:rgba(200,221,232,.35)}
+.newsletter-form input:focus{border-color:var(--sky)}
+.newsletter-form button{font-family:'Manrope',sans-serif;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;padding:.95rem 1.8rem;background:var(--accent);color:#fff;border:none;border-radius:5px;cursor:pointer;transition:all .3s;white-space:nowrap}
+.newsletter-form button:hover{background:var(--accent-hover)}
+.newsletter-note{font-size:.78rem;color:rgba(200,221,232,.35);margin-top:.9rem;font-style:italic}
+.newsletter-confirmed{color:var(--sky);font-size:1rem;display:none;margin-top:1rem;font-weight:500}
+
+/* DETTAGLI */
+.details-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem;margin-top:2rem}
+.detail-card{padding:1.6rem;border:1px solid var(--border);border-radius:10px;background:var(--card);transition:all .3s}
+.detail-card:hover{border-color:var(--ink-faint);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.03)}
+.detail-card .detail-icon{font-size:1.5rem;margin-bottom:.7rem}
+.detail-card h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;margin-bottom:.35rem}
+.detail-card p{font-size:.95rem;color:var(--ink-mid);line-height:1.6;font-weight:300}
+.detail-card a{color:var(--accent);text-decoration:none;font-weight:500}
+
+footer{text-align:center;padding:2.5rem 2rem;border-top:1px solid var(--border)}
+footer p{font-size:.85rem;color:var(--ink-light);font-weight:300}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes tickerScroll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:7rem 2rem 3rem;gap:2.5rem}
+  .hero-right{justify-content:flex-start}
+  .countdown{gap:.6rem}
+  .cd-box{padding:1.2rem .9rem;min-width:70px}
+  .cd-num{font-size:2rem}
+  nav ul{display:none}
+  nav ul.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(244,241,236,.97);backdrop-filter:blur(20px);padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border)}
+  .menu-toggle{display:block}
+  section{padding:4rem 1.5rem}
+  .program-item{flex-direction:column;gap:.2rem}
+  .program-time{min-width:auto}
+  .tt-bar-cell{padding:0 .5rem;width:35%}
+  .tt-name{min-width:80px;font-size:.78rem}
+  .consigli-split{grid-template-columns:1fr}
+  .consigli-ticker{height:280px}
+  .newsletter-form{flex-direction:column}
+  .newsletter-form button{width:100%}
+  .details-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+  .countdown{flex-wrap:wrap;gap:.5rem}
+  .cd-box{flex:1;min-width:60px;padding:1rem .6rem}
+  .cd-num{font-size:1.6rem}
+  .tracker-table{font-size:.8rem}
+  .details-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Giulia 40</div>
+  <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')"><span></span><span></span><span></span></button>
+  <ul>
+    <li><a href="#programma">Programma</a></li>
+    <li><a href="#tracker">Drink Tracker</a></li>
+    <li><a href="#consigli">Consigli</a></li>
+    <li><a href="#dettagli">Info</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">24 — 26 Aprile 2026</p>
+    <h1>Giulia<br>fa <em>quaranta.</em></h1>
+    <p class="hero-tagline"><strong>Sicilian Burning Man</strong> — tre giorni a Mondello tra walking tour, DJ set, chupito boys e decisioni discutibili.</p>
+    <div class="hero-meta">
+      <span>📍 Mondello, Palermo</span>
+      <span>🎪 3 giorni</span>
+      <span>🥂 Troppi litri</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="countdown">
+      <div class="cd-box"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Giorni</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">Ore</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-mins">--</span><span class="cd-label">Minuti</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">Secondi</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROGRAMMA -->
+<section id="programma" class="reveal">
+  <p class="section-label">Il Programma</p>
+  <h2 class="section-title">Tre giorni. Zero rimpianti.</h2>
+  <p class="section-subtitle">Filtra per categoria o goditi il caos completo.</p>
+
+  <div class="program-filters">
+    <button class="filter-btn active" data-cat="all" onclick="filterProgram('all')">Tutto</button>
+    <button class="filter-btn" data-cat="music" onclick="filterProgram('music')">🎵 Musica</button>
+    <button class="filter-btn" data-cat="food" onclick="filterProgram('food')">🍝 Food</button>
+    <button class="filter-btn" data-cat="wellness" onclick="filterProgram('wellness')">🧘 Wellness</button>
+    <button class="filter-btn" data-cat="fun" onclick="filterProgram('fun')">🎲 Fun</button>
+    <button class="filter-btn" data-cat="party" onclick="filterProgram('party')">🔥 Party</button>
+  </div>
+
+  <div class="program-day" id="day-fri">
+    <h3 class="program-day-header">Venerdì 24 Aprile</h3>
+    <p class="program-day-tagline">Si parte gentili. Si finisce meno.</p>
+    <div class="program-item" data-cats="fun"><span class="program-time">18:00</span><span class="program-desc">Partenza pullman Mondello → Palermo <span class="tag tag-fun">trasporto</span></span></div>
+    <div class="program-item" data-cats="fun"><span class="program-time">18:30 — 21:30</span><span class="program-desc">Walking tour centro storico con guida <span class="tag tag-fun">cultura</span></span></div>
+    <div class="program-item" data-cats="food"><span class="program-time">21:30 — 00:45</span><span class="program-desc">Cena + Torta @ Hotel Piazza Borsa <span class="tag tag-food">cena</span> <span class="tag tag-party">torta</span></span></div>
+    <div class="program-item" data-cats="fun"><span class="program-time">00:45 / 1:00</span><span class="program-desc">Rientro in pullman — si dorme (forse) <span class="tag tag-fun">trasporto</span></span></div>
+  </div>
+
+  <div class="program-day" id="day-sat">
+    <h3 class="program-day-header">Sabato 25 Aprile</h3>
+    <p class="program-day-tagline">Il giorno. Quello vero. Prepara il fegato.</p>
+    <div class="program-item" data-cats="food"><span class="program-time">7:00 — 10:30</span><span class="program-desc">Colazione — ne avrai bisogno <span class="tag tag-food">fuel</span></span></div>
+    <div class="program-item" data-cats="wellness"><span class="program-time">11:00 — 11:30</span><span class="program-desc">Yoga & Meditazione con Eli Andreoni e Fra Lucidi <span class="tag tag-wellness">wellness</span> <span class="tag tag-wellness">yoga</span></span></div>
+    <div class="program-item" data-cats="wellness music"><span class="program-time">11:45 — 12:15</span><span class="program-desc">Acqua Gym Mohicano — music by Più Selecta <span class="tag tag-wellness">fitness</span> <span class="tag tag-music">musica</span></span></div>
+    <div class="program-item" data-cats="music"><span class="program-time">12:30 — 12:45</span><span class="program-desc">Manu Amazing Singing 🎤 <span class="tag tag-music">live</span></span></div>
+    <div class="program-item" data-cats="fun food"><span class="program-time">12:45 — 13:15</span><span class="program-desc">Gioco Aperitivo con Lalla <span class="tag tag-fun">gioco</span> <span class="tag tag-food">aperitivo</span></span></div>
+    <div class="program-item" data-cats="food"><span class="program-time">13:30 — 14:30</span><span class="program-desc">Lunch <span class="tag tag-food">pranzo</span></span></div>
+    <div class="program-item" data-cats="fun music"><span class="program-time">14:30 — 15:30</span><span class="program-desc">Tarocchi con Rachi + Chill con DJ Set <span class="tag tag-fun">mistico</span> <span class="tag tag-music">dj set</span></span></div>
+    <div class="program-item" data-cats="wellness music"><span class="program-time">15:30 — 16:00</span><span class="program-desc">Synchro Lessons con Dimitris — music by Pier Quarta <span class="tag tag-wellness">synchro</span> <span class="tag tag-music">musica</span></span></div>
+    <div class="program-item" data-cats="wellness"><span class="program-time">16:15 — 16:45</span><span class="program-desc">Bellezze al Bagno by Macandi e Carlotta <span class="tag tag-wellness">beauty</span></span></div>
+    <div class="program-item" data-cats="music"><span class="program-time">17:00 — 18:30</span><span class="program-desc">DJ Set <span class="tag tag-music">musica</span></span></div>
+    <div class="program-item" data-cats="music"><span class="program-time">18:30 — 19:30</span><span class="program-desc">Loner Tennis Club — LIVE 🎸 <span class="tag tag-music">live</span></span></div>
+    <div class="program-special">🛒 <strong>Chupito Boys</strong> — a rotazione ogni 2 ore da dopo pranzo. Li riconosci dal grembiule e dal carrello. Non puoi dire di no.</div>
+    <div class="program-item" data-cats=""><span class="program-time">19:30 — 21:00</span><span class="program-desc">Break & Docce — riflessione sui propri errori</span></div>
+    <div class="program-item" data-cats="food"><span class="program-time">21:00 — 23:00</span><span class="program-desc">Cena buffet al ristorante <span class="tag tag-food">cena</span></span></div>
+    <div class="program-item" data-cats="party" style="padding-top:1.2rem"><span class="program-time" style="font-weight:500;color:var(--accent)">23:00</span><span class="program-desc" style="font-weight:600;font-size:1.05rem">🔥 PARTY — Zona Congressi <span class="tag tag-party">party</span></span></div>
+    <div class="program-item" data-cats="party music"><span class="program-time">23:00 — 00:00</span><span class="program-desc">Anto De Benedictis <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
+    <div class="program-item" data-cats="party music"><span class="program-time">00:00 — 1:00</span><span class="program-desc">DIJON 👑 <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
+    <div class="program-item" data-cats="party music"><span class="program-time">1:00 — 2:00</span><span class="program-desc">Più <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
+    <div class="program-item" data-cats="party music"><span class="program-time">2:00 — 3:00</span><span class="program-desc">B2B <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
+    <div class="program-item" data-cats="party music"><span class="program-time">3:00 — ???</span><span class="program-desc">Open consolle — fino a quando reggiamo <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
+  </div>
+
+  <div class="program-day" id="day-sun">
+    <h3 class="program-day-header">Domenica 26 Aprile</h3>
+    <p class="program-day-tagline">I sopravvissuti.</p>
+    <div class="program-item" data-cats="food"><span class="program-time">7:00 — 10:30</span><span class="program-desc">Colazione — il caffè è il tuo migliore amico <span class="tag tag-food">recovery</span></span></div>
+    <div class="program-item" data-cats="food wellness"><span class="program-time">13:00 — 14:00</span><span class="program-desc">Brunch a bordo piscina 🏊 <span class="tag tag-food">brunch</span> <span class="tag tag-wellness">pool</span></span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DRINK TRACKER -->
+<section class="tracker-section" id="tracker">
+  <div class="tracker-inner reveal">
+    <p class="section-label">Live Drink Tracker</p>
+    <h2 class="section-title">Quanto stiamo bevendo?</h2>
+    <p class="section-subtitle">Contatore in tempo reale. Dalle 20:30 di venerdì alle 6:00 di sabato.</p>
+
+    <div class="tracker-status">
+      <span class="tracker-dot" id="tracker-dot"></span>
+      <span class="tracker-status-text" id="tracker-status-text">In attesa della festa...</span>
+      <span class="tracker-time" id="tracker-sim-time"></span>
+    </div>
+
+    <table class="tracker-table" id="tracker-table"></table>
+
+    <div class="tracker-total">
+      <span class="tracker-total-label">Scorte consumate</span>
+      <span class="tracker-total-pct" id="tracker-pct">0%</span>
+    </div>
+    <div class="tracker-bar-wrap">
+      <div class="tracker-bar-label">Progresso totale distruzione scorte</div>
+      <div class="tracker-bar-outer-total"><div class="tracker-bar-inner-total" id="tracker-bar-total"></div></div>
+      <span class="tracker-bar-pct-inline" id="tracker-bar-pct-text">0%</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONSIGLI -->
+<section id="consigli" class="reveal">
+  <p class="section-label">Bacheca</p>
+  <h2 class="section-title">Consigli per i 40</h2>
+  <p class="section-subtitle">Lascia un consiglio per Giulia. Sarà letto probabilmente con un bicchiere in mano.</p>
+
+  <div class="consigli-split">
+    <div class="consigli-write">
+      <div class="bacheca-form">
+        <input type="text" id="msg-name" placeholder="Il tuo nome" maxlength="50">
+        <textarea id="msg-text" placeholder="Il tuo consiglio per i 40..."></textarea>
+        <button onclick="postMessage()">Invia consiglio</button>
+      </div>
+    </div>
+    <div class="consigli-live">
+      <p class="consigli-live-header"><span class="live-dot"></span> Live</p>
+      <div class="consigli-ticker" id="ticker-wrap">
+        <div class="consigli-ticker-inner" id="ticker-inner"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <p class="section-label">Resta nel giro</p>
+  <h2 class="section-title" style="font-size:clamp(1.8rem,3.5vw,2.5rem)">Non perderti il meglio.<br>E nemmeno il peggio.</h2>
+  <p class="section-subtitle">Iscriviti: sabato il programma e il contatore alcool pre-partita. Lunedì il resoconto dei danni, gli awards e i ringraziamenti.</p>
+  <div class="newsletter-form" id="nl-form">
+    <input type="email" id="nl-email" placeholder="la-tua@email.com">
+    <button onclick="subscribeNL()">Iscrivimi</button>
+  </div>
+  <p class="newsletter-confirmed" id="nl-confirmed">✓ Sei dentro. Preparati al peggio.</p>
+  <p class="newsletter-note">Zero spam. Solo contenuti di dubbio gusto, due volte in tutto.</p>
+</section>
+
+<!-- DETTAGLI -->
+<section id="dettagli" class="reveal">
+  <p class="section-label">Info Pratiche</p>
+  <h2 class="section-title">Dove, quando, come vestirsi.</h2>
+  <p class="section-subtitle">Tutto quello che serve per sopravvivere al weekend.</p>
+  <div class="details-grid">
+    <div class="detail-card"><div class="detail-icon">📍</div><h3>Location</h3><p>Hotel La Torre — Mondello, Palermo<br><br><a href="https://maps.app.goo.gl/czRFDixNfA5KFYZD9?g_st=iw" target="_blank">Apri su Google Maps →</a></p></div>
+    <div class="detail-card"><div class="detail-icon">📅</div><h3>Quando</h3><p>24 — 26 Aprile 2026<br>Si parte venerdì alle 18:00<br>Si sopravvive fino a domenica.</p></div>
+    <div class="detail-card"><div class="detail-icon">👗</div><h3>Dress Code</h3><p><strong>Sicilian Burning Man</strong><br><br>Carretti siciliani, boho, glitter, cannoli — tutto è benvenuto.</p></div>
+    <div class="detail-card"><div class="detail-icon">🚌</div><h3>Trasporti</h3><p>Pullman organizzato Mondello → Palermo centro. Spiazzo davanti all'hotel.</p></div>
+  </div>
+</section>
+
+<footer><p>Fatto con ♥ e troppo spumante — Giulia Dijon, 40 anni, Mondello 2026</p></footer>
+
+<script>
+// COUNTDOWN
+function updateCD(){
+  const t=new Date('2026-04-24T18:00:00+02:00'),d=t-new Date();
+  if(d<=0){['cd-days','cd-hours','cd-mins','cd-secs'].forEach(i=>document.getElementById(i).textContent='🎉');return}
+  document.getElementById('cd-days').textContent=String(Math.floor(d/864e5)).padStart(2,'0');
+  document.getElementById('cd-hours').textContent=String(Math.floor((d%864e5)/36e5)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent=String(Math.floor((d%36e5)/6e4)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent=String(Math.floor((d%6e4)/1e3)).padStart(2,'0');
+}
+updateCD();setInterval(updateCD,1000);
+
+// REVEAL
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// FILTER
+function filterProgram(cat){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.filter-btn[data-cat="${cat}"]`).classList.add('active');
+  document.querySelectorAll('.program-item').forEach(item=>{
+    if(cat==='all'){item.classList.remove('hidden');return}
+    item.classList.toggle('hidden',!(item.dataset.cats||'').split(' ').includes(cat));
+  });
+  document.querySelectorAll('.program-day').forEach(day=>{
+    const vis=day.querySelectorAll('.program-item:not(.hidden)');
+    const sp=day.querySelector('.program-special');
+    if(cat==='all'){day.style.display='';if(sp)sp.style.display='';return}
+    day.style.display=vis.length===0?'none':'';
+    if(sp)sp.style.display=cat==='all'?'':'none';
+  });
+}
+
+// DRINK TRACKER
+const DRINKS=[
+  {id:'birra',emoji:'🍺',label:'Birra',unit:'L',max:250},
+  {id:'gin',emoji:'🫒',label:'Gin',unit:'bot.',max:35},
+  {id:'vodka',emoji:'🧊',label:'Vodka',unit:'bot.',max:10},
+  {id:'tequila',emoji:'🌵',label:'Tequila',unit:'bot.',max:18},
+  {id:'bianco',emoji:'🍷',label:'Bianco',unit:'bot.',max:40},
+  {id:'bfrizz',emoji:'✨',label:'Bianco Frizz.',unit:'bot.',max:20},
+  {id:'rose',emoji:'🌸',label:'Rosé Frizz.',unit:'bot.',max:20},
+  {id:'rosso',emoji:'🩸',label:'Rosso',unit:'bot.',max:20},
+  {id:'spumante',emoji:'🥂',label:'Spumante',unit:'bot.',max:20},
+  {id:'acqua',emoji:'💧',label:'Acqua',unit:'L',max:300},
+];
+
+// Build table
+const tbl=document.getElementById('tracker-table');
+DRINKS.forEach(d=>{
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td class="tt-emoji">${d.emoji}</td><td class="tt-name">${d.label}</td><td class="tt-bar-cell"><div class="tt-bar-outer"><div class="tt-bar-inner" id="bar-${d.id}"></div></div></td><td class="tt-val" id="val-${d.id}">0</td><td class="tt-max">/ ${d.max} ${d.unit}</td>`;
+  tbl.appendChild(tr);
+});
+
+let seed=42;
+function sRand(){seed=(seed*16807)%2147483647;return(seed-1)/2147483646}
+function genCurves(){
+  const pts=100,c={};
+  DRINKS.forEach(d=>{c[d.id]=[];let a=0;for(let i=0;i<pts;i++){a+=Math.sin(i/pts*Math.PI*.9)*(.6+sRand()*.8);c[d.id].push(a)}
+  const mx=c[d.id][pts-1];c[d.id]=c[d.id].map(v=>Math.round(v/mx*d.max*10)/10)});return c;
+}
+const curves=genCurves();
+const FS=new Date('2026-04-24T20:30:00+02:00').getTime(),FE=new Date('2026-04-25T06:00:00+02:00').getTime(),FD=FE-FS;
+
+function updateTracker(){
+  const now=Date.now();let p=0,st='In attesa della festa...',live=false,tm='';
+  if(now<FS){
+    // Demo mode: cycle every 5 min
+    const el=(now-(now%864e5))/1000;
+    p=((now/1000-Math.floor(now/1000/300)*300))/300;
+    st='Anteprima — simulazione in corso';live=true;
+    const sd=new Date(FS+p*FD);tm=sd.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'})+' (sim)';
+  }else if(now>=FE){p=1;st='Festa finita. I danni sono stati fatti.'}
+  else{p=(now-FS)/FD;st='LIVE — La festa è in corso';live=true;tm=new Date(now).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'})}
+
+  document.getElementById('tracker-dot').classList.toggle('off',!live);
+  document.getElementById('tracker-status-text').textContent=st;
+  document.getElementById('tracker-sim-time').textContent=tm;
+
+  const step=Math.min(Math.floor(p*100),99);
+  let tot=0;
+  DRINKS.forEach(d=>{
+    const v=p>=1?d.max:curves[d.id][step];
+    const disp=Number.isInteger(v)?v:v.toFixed(1);
+    document.getElementById(`val-${d.id}`).textContent=disp;
+    document.getElementById(`bar-${d.id}`).style.width=(v/d.max*100)+'%';
+    tot+=v/d.max;
+  });
+  const pct=Math.round(tot/DRINKS.length*100);
+  document.getElementById('tracker-pct').textContent=pct+'%';
+  document.getElementById('tracker-bar-total').style.width=pct+'%';
+  document.getElementById('tracker-bar-pct-text').textContent=pct+'%';
+}
+updateTracker();setInterval(updateTracker,2000);
+
+// CONSIGLI
+const SEED=[
+  {name:'Valentina',text:'A 40 anni non invecchi, diventi vintage. Come il vino che bevi. In quantità industriali.',time:'2026-04-10T10:00:00'},
+  {name:'Marco',text:'Consiglio numero uno: compra un buon materasso. Da ora in poi il tuo corpo ti presenterà il conto di ogni serata.',time:'2026-04-11T14:30:00'},
+  {name:'Chiara',text:'I 40 sono i nuovi 30. Solo che alle 23 vuoi già il pigiama. Goditi la festa finché reggi.',time:'2026-04-12T09:15:00'},
+  {name:'Alessandro',text:'Ricordati: dopo i 40 non si dice "esco stasera", si dice "valuterò in base a come mi sento".',time:'2026-04-13T18:00:00'},
+  {name:'Francesca',text:'Il mio consiglio? Investi in occhiali da lettura carini, perché il menù del ristorante sta per diventare illeggibile.',time:'2026-04-14T11:45:00'},
+];
+function getMsgs(){try{return JSON.parse(localStorage.getItem('g40_msgs')||'[]')}catch{return[]}}
+function saveMsgs(m){localStorage.setItem('g40_msgs',JSON.stringify(m))}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function fmt(iso){try{const d=new Date(iso);return d.toLocaleDateString('it-IT',{day:'numeric',month:'short'})+' · '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'})}catch{return''}}
+function renderTicker(){
+  const all=[...SEED,...getMsgs()];
+  const inner=document.getElementById('ticker-inner');
+  const cards=all.map(m=>`<div class="ticker-card"><div class="tc-author">${esc(m.name)}</div><div class="tc-text">${esc(m.text)}</div><div class="tc-time">${fmt(m.time)}</div></div>`).join('');
+  inner.innerHTML=cards+cards;
+  inner.style.animationDuration=Math.max(20,all.length*5)+'s';
+}
+function postMessage(){
+  const n=document.getElementById('msg-name').value.trim(),t=document.getElementById('msg-text').value.trim();
+  if(!n||!t)return;const m=getMsgs();m.push({name:n,text:t,time:new Date().toISOString()});saveMsgs(m);renderTicker();
+  document.getElementById('msg-name').value='';document.getElementById('msg-text').value='';
+}
+renderTicker();
+
+// NEWSLETTER
+function subscribeNL(){
+  const e=document.getElementById('nl-email').value.trim();if(!e||!e.includes('@'))return;
+  const s=JSON.parse(localStorage.getItem('g40_subs')||'[]');
+  if(!s.includes(e)){s.push(e);localStorage.setItem('g40_subs',JSON.stringify(s))}
+  document.getElementById('nl-form').style.display='none';document.getElementById('nl-confirmed').style.display='block';
+}
+
+// NAV MOBILE
+document.querySelectorAll('nav ul a').forEach(a=>a.addEventListener('click',()=>document.querySelector('nav ul').classList.remove('open')));
+</script>
+</body>
+</html>
