@@ -605,8 +605,18 @@ function renderTicker(dbMsgs){
   const all=[...SEED,...dbMsgs];
   const inner=document.getElementById('ticker-inner');
   const cards=all.map(m=>`<div class="ticker-card"><div class="tc-author">${esc(m.name)}</div><div class="tc-text">${esc(m.text)}</div><div class="tc-time">${fmt(m.created_at||m.time)}</div></div>`).join('');
-  inner.innerHTML=cards+cards;
-  inner.style.animationDuration=Math.max(25,all.length*5)+'s';
+  if(all.length===0){
+    inner.innerHTML='<div style="padding:2rem;text-align:center;color:var(--ink-light);font-style:italic">Nessun consiglio ancora. Sii il primo!</div>';
+    inner.style.animation='none';
+  } else if(all.length<=3){
+    // Few messages: show static, no scroll
+    inner.innerHTML=cards;
+    inner.style.animation='none';
+  } else {
+    // Enough messages: scroll loop
+    inner.innerHTML=cards+cards;
+    inner.style.animation=`tickerScroll ${Math.max(25,all.length*5)}s linear infinite`;
+  }
 }
 
 async function loadMessages(){
