@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giulia Dijon — 40</title>
+<script defer src="/_vercel/insights/script.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -139,7 +140,8 @@ section{padding:6rem 2.5rem;max-width:1100px;margin:0 auto}
 .consigli-split{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
 .consigli-live-header{font-family:'Cormorant Garamond',serif;font-size:1.4rem;margin-bottom:1rem;font-weight:400}
 .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:.3rem;animation:pulse 2s infinite}
-.consigli-ticker{height:400px;overflow:hidden;border-radius:10px;background:var(--card);border:1px solid var(--border-mid)}
+.consigli-ticker{height:400px;overflow-y:auto;border-radius:10px;background:var(--card);border:1px solid var(--border-mid);-webkit-overflow-scrolling:touch}
+.consigli-ticker:hover .consigli-ticker-inner,.consigli-ticker:active .consigli-ticker-inner{animation-play-state:paused}
 .consigli-ticker-inner{animation:tickerScroll 30s linear infinite;padding:.8rem}
 .ticker-card{padding:1.1rem 1.2rem;margin-bottom:.7rem;background:var(--bg);border-radius:6px;border-left:2px solid var(--accent)}
 .ticker-card .tc-author{font-weight:600;font-size:.88rem;color:var(--accent);margin-bottom:.2rem}
@@ -651,7 +653,7 @@ async function subscribeNL(){
   document.getElementById('nl-form').style.display='none';
   document.getElementById('nl-confirmed').style.display='block';
   btn.textContent='Iscrivimi';btn.disabled=false;
-  showToast('📬','Ora sono cazzi tuoi.','Hai firmato. Non si torna indietro. Riceverai solo due email: una il sabato con il programma, una il lunedì con il resoconto dei danni. Niente spam, promesso. Il resto dei danni li vedrai di persona.');
+  showToast('📬','Ora sono fatti tuoi.','Hai firmato. Non si torna indietro. Riceverai solo due email: una il sabato con il programma, una il lunedì con il resoconto dei danni. Niente spam, promesso. Il resto dei danni li vedrai di persona.');
 }
 
 // NAV MOBILE
