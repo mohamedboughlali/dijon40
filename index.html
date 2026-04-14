@@ -96,6 +96,7 @@ section{padding:6rem 2.5rem;max-width:1100px;margin:0 auto}
 .tag-wellness{background:rgba(58,138,122,.1);color:var(--tag-wellness)}
 .tag-fun{background:rgba(110,91,153,.1);color:var(--tag-fun)}
 .tag-party{background:rgba(212,74,58,.12);color:var(--tag-party)}
+.program-note-inline{font-size:.83rem;color:var(--ink-light);font-style:italic;margin-top:.4rem;line-height:1.5;display:block}
 .program-special{margin-top:1.2rem;padding:1rem 1.3rem;background:var(--bg-alt);border-radius:8px;border-left:3px solid var(--accent);font-size:.95rem}
 .program-special strong{font-weight:600}
 
@@ -173,6 +174,17 @@ section{padding:6rem 2.5rem;max-width:1100px;margin:0 auto}
 .detail-card h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;margin-bottom:.35rem}
 .detail-card p{font-size:.95rem;color:var(--ink-mid);line-height:1.6;font-weight:300}
 .detail-card a{color:var(--accent);text-decoration:none;font-weight:500}
+
+/* POPUP TOAST */
+.toast-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(17,24,50,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.toast-overlay.show{opacity:1;pointer-events:auto}
+.toast-box{background:var(--card);border-radius:16px;padding:2.5rem;max-width:420px;width:90%;text-align:center;transform:scale(.9);transition:transform .3s;box-shadow:0 20px 60px rgba(0,0,0,.15)}
+.toast-overlay.show .toast-box{transform:scale(1)}
+.toast-emoji{font-size:2.5rem;margin-bottom:1rem;display:block}
+.toast-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;margin-bottom:.5rem;color:var(--ink)}
+.toast-text{font-size:.95rem;color:var(--ink-mid);line-height:1.6;font-weight:300;margin-bottom:1.5rem}
+.toast-btn{font-family:'Manrope',sans-serif;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;padding:.8rem 2rem;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;transition:all .3s}
+.toast-btn:hover{background:var(--accent-hover)}
 
 footer{text-align:center;padding:2.5rem 2rem;border-top:1px solid var(--border)}
 footer p{font-size:.85rem;color:var(--ink-light);font-weight:300}
@@ -267,9 +279,9 @@ footer p{font-size:.85rem;color:var(--ink-light);font-weight:300}
   <div class="program-day" id="day-fri">
     <h3 class="program-day-header">Venerdì 24 Aprile</h3>
     <p class="program-day-tagline">Si parte gentili. Si finisce meno.</p>
-    <div class="program-item" data-cats="fun"><span class="program-time">18:00</span><span class="program-desc">Partenza pullman Mondello → Palermo <span class="tag tag-fun">trasporto</span></span></div>
+    <div class="program-item" data-cats="fun"><span class="program-time">18:00</span><span class="program-desc">Partenza pullman Mondello → Palermo <span class="tag tag-fun">trasporto</span><p class="program-note-inline">Per chi non riuscisse ad arrivare entro la partenza del pullman potrete organizzarvi per prendere un taxi autonomamente o con il supporto dell'hotel e raggiungerci al tour e/o a cena.</p></span></div>
     <div class="program-item" data-cats="fun"><span class="program-time">18:30 — 21:30</span><span class="program-desc">Walking tour centro storico con guida <span class="tag tag-fun">cultura</span></span></div>
-    <div class="program-item" data-cats="food"><span class="program-time">21:30 — 00:45</span><span class="program-desc">Cena + Torta @ Hotel Piazza Borsa <span class="tag tag-food">cena</span> <span class="tag tag-party">torta</span></span></div>
+    <div class="program-item" data-cats="food party"><span class="program-time">21:30 — 00:45</span><span class="program-desc">Cena + Torta @ Hotel Piazza Borsa <span class="tag tag-food">cena</span> <span class="tag tag-party">torta</span></span></div>
     <div class="program-item" data-cats="fun"><span class="program-time">00:45 / 1:00</span><span class="program-desc">Rientro in pullman — si dorme (forse) <span class="tag tag-fun">trasporto</span></span></div>
   </div>
 
@@ -278,23 +290,23 @@ footer p{font-size:.85rem;color:var(--ink-light);font-weight:300}
     <p class="program-day-tagline">Il giorno. Quello vero. Prepara il fegato.</p>
     <div class="program-item" data-cats="food"><span class="program-time">7:00 — 10:30</span><span class="program-desc">Colazione — ne avrai bisogno <span class="tag tag-food">fuel</span></span></div>
     <div class="program-item" data-cats="wellness"><span class="program-time">11:00 — 11:30</span><span class="program-desc">Yoga & Meditazione con Eli Andreoni e Fra Lucidi <span class="tag tag-wellness">wellness</span> <span class="tag tag-wellness">yoga</span></span></div>
-    <div class="program-item" data-cats="wellness music"><span class="program-time">11:45 — 12:15</span><span class="program-desc">Acqua Gym Mohicano — music by Più Selecta <span class="tag tag-wellness">fitness</span> <span class="tag tag-music">musica</span></span></div>
-    <div class="program-item" data-cats="music"><span class="program-time">12:30 — 12:45</span><span class="program-desc">Manu Amazing Singing 🎤 <span class="tag tag-music">live</span></span></div>
-    <div class="program-item" data-cats="fun food"><span class="program-time">12:45 — 13:15</span><span class="program-desc">Gioco Aperitivo con Lalla <span class="tag tag-fun">gioco</span> <span class="tag tag-food">aperitivo</span></span></div>
-    <div class="program-item" data-cats="food"><span class="program-time">13:30 — 14:30</span><span class="program-desc">Lunch <span class="tag tag-food">pranzo</span></span></div>
-    <div class="program-item" data-cats="fun music"><span class="program-time">14:30 — 15:30</span><span class="program-desc">Tarocchi con Rachi + Chill con DJ Set <span class="tag tag-fun">mistico</span> <span class="tag tag-music">dj set</span></span></div>
-    <div class="program-item" data-cats="wellness music"><span class="program-time">15:30 — 16:00</span><span class="program-desc">Synchro Lessons con Dimitris — music by Pier Quarta <span class="tag tag-wellness">synchro</span> <span class="tag tag-music">musica</span></span></div>
-    <div class="program-item" data-cats="wellness"><span class="program-time">16:15 — 16:45</span><span class="program-desc">Bellezze al Bagno by Macandi e Carlotta <span class="tag tag-wellness">beauty</span></span></div>
-    <div class="program-item" data-cats="music"><span class="program-time">17:00 — 18:30</span><span class="program-desc">DJ Set <span class="tag tag-music">musica</span></span></div>
+    <div class="program-item" data-cats="wellness music"><span class="program-time">11:45 — 12:15</span><span class="program-desc">Acqua Gym Mohicano con Frankie & friends — music by Più Selecta <span class="tag tag-wellness">fitness</span> <span class="tag tag-music">musica</span></span></div>
+    <div class="program-item" data-cats="fun food music"><span class="program-time">12:30 — 13:15</span><span class="program-desc">Gioco Aperitivo con Vero, Lalla e la nostra cantante Manu <span class="tag tag-fun">gioco</span> <span class="tag tag-food">aperitivo</span> <span class="tag tag-music">musica</span></span></div>
+    <div class="program-item" data-cats="food"><span class="program-time">13:15 — 14:15</span><span class="program-desc">Lunch <span class="tag tag-food">pranzo</span></span></div>
+    <div class="program-item" data-cats="fun music"><span class="program-time">14:15 — 15:15</span><span class="program-desc">Tarocchi con Rachi + DJ Set by Ema <span class="tag tag-fun">mistico</span> <span class="tag tag-music">dj</span></span></div>
+    <div class="program-item" data-cats="wellness music"><span class="program-time">15:15 — 15:45</span><span class="program-desc">Synchro swimming Lessons con Dimitris — music by Pier <span class="tag tag-wellness">synchro</span> <span class="tag tag-music">musica</span></span></div>
+    <div class="program-item" data-cats="wellness"><span class="program-time">16:00 — 16:30</span><span class="program-desc">Bellezze al Bagno by Macandi e Carlotta <span class="tag tag-wellness">beauty</span></span></div>
+    <div class="program-item" data-cats="music"><span class="program-time">16:30 — 17:30</span><span class="program-desc">DJ Set by LoDj B2B Camanz <span class="tag tag-music">dj</span></span></div>
+    <div class="program-item" data-cats="music"><span class="program-time">17:30 — 18:30</span><span class="program-desc">DJ Set by Ennesime <span class="tag tag-music">dj</span></span></div>
     <div class="program-item" data-cats="music"><span class="program-time">18:30 — 19:30</span><span class="program-desc">Loner Tennis Club — LIVE 🎸 <span class="tag tag-music">live</span></span></div>
     <div class="program-special">🛒 <strong>Chupito Boys</strong> — a rotazione ogni 2 ore da dopo pranzo. Li riconosci dal grembiule e dal carrello. Non puoi dire di no.</div>
     <div class="program-item" data-cats=""><span class="program-time">19:30 — 21:00</span><span class="program-desc">Break & Docce — riflessione sui propri errori</span></div>
     <div class="program-item" data-cats="food"><span class="program-time">21:00 — 23:00</span><span class="program-desc">Cena buffet al ristorante <span class="tag tag-food">cena</span></span></div>
     <div class="program-item" data-cats="party" style="padding-top:1.2rem"><span class="program-time" style="font-weight:500;color:var(--accent)">23:00</span><span class="program-desc" style="font-weight:600;font-size:1.05rem">🔥 PARTY — Zona Congressi <span class="tag tag-party">party</span></span></div>
-    <div class="program-item" data-cats="party music"><span class="program-time">23:00 — 00:00</span><span class="program-desc">Anto De Benedictis <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
-    <div class="program-item" data-cats="party music"><span class="program-time">00:00 — 1:00</span><span class="program-desc">DIJON 👑 <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
-    <div class="program-item" data-cats="party music"><span class="program-time">1:00 — 2:00</span><span class="program-desc">Più <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
-    <div class="program-item" data-cats="party music"><span class="program-time">2:00 — 3:00</span><span class="program-desc">B2B <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
+    <div class="program-item" data-cats="party music"><span class="program-time">23:00 — 00:00</span><span class="program-desc">Dj Set by Anto De Benedictis <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
+    <div class="program-item" data-cats="party music"><span class="program-time">00:00 — 1:00</span><span class="program-desc">Dj Set by DIJON 👑 <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
+    <div class="program-item" data-cats="party music"><span class="program-time">1:00 — 2:00</span><span class="program-desc">Dj Set by Più <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
+    <div class="program-item" data-cats="party music"><span class="program-time">2:00 — 3:00</span><span class="program-desc">B2B ammucchiata tra chi c'ha voglia <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
     <div class="program-item" data-cats="party music"><span class="program-time">3:00 — ???</span><span class="program-desc">Open consolle — fino a quando reggiamo <span class="tag tag-music">dj</span> <span class="tag tag-party">party</span></span></div>
   </div>
 
@@ -313,7 +325,7 @@ footer p{font-size:.85rem;color:var(--ink-light);font-weight:300}
   <div class="tracker-inner reveal">
     <p class="section-label">Live Drink Tracker</p>
     <h2 class="section-title">Quanto stiamo bevendo?</h2>
-    <p class="section-subtitle">Contatore in tempo reale. Dalle 20:30 di venerdì alle 6:00 di sabato.</p>
+    <p class="section-subtitle">Contatore in tempo reale dell'alcool consumato durante il weekend. Si parte piano, si finisce malissimo.</p>
 
     <div class="tracker-status">
       <span class="tracker-dot" id="tracker-dot"></span>
@@ -386,7 +398,26 @@ footer p{font-size:.85rem;color:var(--ink-light);font-weight:300}
 
 <footer><p>Fatto con ♥ e troppo spumante — Giulia Dijon, 40 anni, Mondello 2026</p></footer>
 
+<!-- TOAST POPUP -->
+<div class="toast-overlay" id="toast" onclick="if(event.target===this)closeToast()">
+  <div class="toast-box">
+    <span class="toast-emoji" id="toast-emoji"></span>
+    <h3 class="toast-title" id="toast-title"></h3>
+    <p class="toast-text" id="toast-text"></p>
+    <button class="toast-btn" onclick="closeToast()">Ok, capito</button>
+  </div>
+</div>
+
 <script>
+// TOAST
+function showToast(emoji,title,text){
+  document.getElementById('toast-emoji').textContent=emoji;
+  document.getElementById('toast-title').textContent=title;
+  document.getElementById('toast-text').textContent=text;
+  document.getElementById('toast').classList.add('show');
+}
+function closeToast(){document.getElementById('toast').classList.remove('show')}
+
 // COUNTDOWN
 function updateCD(){
   const t=new Date('2026-04-24T18:00:00+02:00'),d=t-new Date();
@@ -441,35 +472,102 @@ DRINKS.forEach(d=>{
   tbl.appendChild(tr);
 });
 
+// FESTA PHASES (all times in Europe/Rome CEST = UTC+2)
+// Phase 1: Ven 24 19:00 → Sab 25 01:00 (cena, torta, rientro) = 6h — ~12% scorte
+// Phase 2: Sab 25 12:00 → Sab 25 21:00 (giorno, aperitivi, chupitos) = 9h — ~25% scorte
+// Phase 3: Sab 25 21:00 → Dom 26 06:00 (cena + party) = 9h — ~58% scorte
+// Phase 4: Dom 26 06:00 → Dom 26 14:00 (recovery brunch) = 8h — ~5% scorte
+const PHASES=[
+  {start:'2026-04-24T19:00:00+02:00', end:'2026-04-25T01:00:00+02:00', pct:0.12},
+  {start:'2026-04-25T12:00:00+02:00', end:'2026-04-25T21:00:00+02:00', pct:0.25},
+  {start:'2026-04-25T21:00:00+02:00', end:'2026-04-26T06:00:00+02:00', pct:0.58},
+  {start:'2026-04-26T06:00:00+02:00', end:'2026-04-26T14:00:00+02:00', pct:0.05},
+];
+
+// Per-drink weight per phase (how much of THAT drink's total goes in each phase)
+// Rows: phases. Some drinks spike at night, some during day.
+const DRINK_WEIGHTS={
+  birra:    [0.08, 0.30, 0.55, 0.07],
+  gin:      [0.05, 0.20, 0.70, 0.05],
+  vodka:    [0.02, 0.10, 0.85, 0.03],
+  tequila:  [0.02, 0.08, 0.87, 0.03],
+  bianco:   [0.15, 0.30, 0.50, 0.05],
+  bfrizz:   [0.10, 0.35, 0.48, 0.07],
+  rose:     [0.08, 0.40, 0.45, 0.07],
+  rosso:    [0.20, 0.15, 0.58, 0.07],
+  spumante: [0.25, 0.15, 0.55, 0.05],
+  acqua:    [0.10, 0.25, 0.35, 0.30],
+};
+
+// Seeded random for jitter
 let seed=42;
 function sRand(){seed=(seed*16807)%2147483647;return(seed-1)/2147483646}
-function genCurves(){
-  const pts=100,c={};
-  DRINKS.forEach(d=>{c[d.id]=[];let a=0;for(let i=0;i<pts;i++){a+=Math.sin(i/pts*Math.PI*.9)*(.6+sRand()*.8);c[d.id].push(a)}
-  const mx=c[d.id][pts-1];c[d.id]=c[d.id].map(v=>Math.round(v/mx*d.max*10)/10)});return c;
+
+// Pre-compute cumulative breakpoints for each drink
+// Each drink has an array of {startMs, endMs, startPct, endPct}
+function buildDrinkTimeline(drinkId){
+  const w=DRINK_WEIGHTS[drinkId];
+  let cumPct=0;
+  return PHASES.map((ph,i)=>{
+    const sp=cumPct;
+    cumPct+=w[i];
+    return {startMs:new Date(ph.start).getTime(), endMs:new Date(ph.end).getTime(), startPct:sp, endPct:cumPct};
+  });
 }
-const curves=genCurves();
-const FS=new Date('2026-04-24T20:30:00+02:00').getTime(),FE=new Date('2026-04-25T06:00:00+02:00').getTime(),FD=FE-FS;
+
+const drinkTimelines={};
+DRINKS.forEach(d=>{drinkTimelines[d.id]=buildDrinkTimeline(d.id)});
+
+const FEST_START=new Date('2026-04-24T19:00:00+02:00').getTime();
+const FEST_END=new Date('2026-04-26T14:00:00+02:00').getTime();
+
+function getDrinkValue(drinkId,now){
+  const timeline=drinkTimelines[drinkId];
+  const drink=DRINKS.find(d=>d.id===drinkId);
+  if(now<timeline[0].startMs) return 0;
+  for(const seg of timeline){
+    if(now>=seg.startMs && now<seg.endMs){
+      // Between phases there may be gaps (sleeping etc) — stay at startPct
+      const progress=(now-seg.startMs)/(seg.endMs-seg.startMs);
+      // Ease-in-out for natural feel
+      const eased=progress<0.5?2*progress*progress:1-Math.pow(-2*progress+2,2)/2;
+      const pct=seg.startPct+(seg.endPct-seg.startPct)*eased;
+      return Math.round(pct*drink.max*10)/10;
+    }
+    if(now>=seg.endMs){
+      // Check if we're in a gap before next segment
+      const nextIdx=timeline.indexOf(seg)+1;
+      if(nextIdx<timeline.length && now<timeline[nextIdx].startMs){
+        // In a gap — hold at end of this segment
+        return Math.round(seg.endPct*drink.max*10)/10;
+      }
+    }
+  }
+  // Past everything
+  return drink.max;
+}
 
 function updateTracker(){
-  const now=Date.now();let p=0,st='In attesa della festa...',live=false,tm='';
-  if(now<FS){
-    // Demo mode: cycle every 5 min
-    const el=(now-(now%864e5))/1000;
-    p=((now/1000-Math.floor(now/1000/300)*300))/300;
-    st='Anteprima — simulazione in corso';live=true;
-    const sd=new Date(FS+p*FD);tm=sd.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'})+' (sim)';
-  }else if(now>=FE){p=1;st='Festa finita. I danni sono stati fatti.'}
-  else{p=(now-FS)/FD;st='LIVE — La festa è in corso';live=true;tm=new Date(now).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'})}
+  const now=Date.now();
+  let st,live=false,tm='';
+
+  if(now<FEST_START){
+    st='La festa non è ancora iniziata — il contatore parte venerdì alle 19';
+  } else if(now>=FEST_END){
+    st='Festa finita. I danni sono stati fatti.';
+  } else {
+    st='LIVE — La festa è in corso';
+    live=true;
+    tm=new Date(now).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
+  }
 
   document.getElementById('tracker-dot').classList.toggle('off',!live);
   document.getElementById('tracker-status-text').textContent=st;
   document.getElementById('tracker-sim-time').textContent=tm;
 
-  const step=Math.min(Math.floor(p*100),99);
   let tot=0;
   DRINKS.forEach(d=>{
-    const v=p>=1?d.max:curves[d.id][step];
+    const v=getDrinkValue(d.id,now);
     const disp=Number.isInteger(v)?v:v.toFixed(1);
     document.getElementById(`val-${d.id}`).textContent=disp;
     document.getElementById(`bar-${d.id}`).style.width=(v/d.max*100)+'%';
@@ -480,40 +578,77 @@ function updateTracker(){
   document.getElementById('tracker-bar-total').style.width=pct+'%';
   document.getElementById('tracker-bar-pct-text').textContent=pct+'%';
 }
-updateTracker();setInterval(updateTracker,2000);
+updateTracker();setInterval(updateTracker,3000);
 
 // CONSIGLI
 const SEED=[
-  {name:'Valentina',text:'A 40 anni non invecchi, diventi vintage. Come il vino che bevi. In quantità industriali.',time:'2026-04-10T10:00:00'},
-  {name:'Marco',text:'Consiglio numero uno: compra un buon materasso. Da ora in poi il tuo corpo ti presenterà il conto di ogni serata.',time:'2026-04-11T14:30:00'},
-  {name:'Chiara',text:'I 40 sono i nuovi 30. Solo che alle 23 vuoi già il pigiama. Goditi la festa finché reggi.',time:'2026-04-12T09:15:00'},
-  {name:'Alessandro',text:'Ricordati: dopo i 40 non si dice "esco stasera", si dice "valuterò in base a come mi sento".',time:'2026-04-13T18:00:00'},
-  {name:'Francesca',text:'Il mio consiglio? Investi in occhiali da lettura carini, perché il menù del ristorante sta per diventare illeggibile.',time:'2026-04-14T11:45:00'},
+  {name:'Moa',text:'Giulia, 40 anni e ancora non hai imparato a dire di no a un altro giro. Per questo ti vogliamo bene. Lasciate un consiglio, vedrete che li legge tutti. Probabilmente piangendo.',time:'2026-04-10T10:00:00'},
+  {name:'Valentina',text:'A 40 anni non invecchi, diventi vintage. Come il vino che bevi. In quantità industriali.',time:'2026-04-11T14:30:00'},
+  {name:'Marco',text:'Consiglio numero uno: compra un buon materasso. Da ora in poi il tuo corpo ti presenterà il conto di ogni serata.',time:'2026-04-12T09:15:00'},
+  {name:'Chiara',text:'I 40 sono i nuovi 30. Solo che alle 23 vuoi già il pigiama. Goditi la festa finché reggi.',time:'2026-04-13T18:00:00'},
+  {name:'Alessandro',text:'Ricordati: dopo i 40 non si dice "esco stasera", si dice "valuterò in base a come mi sento".',time:'2026-04-14T11:45:00'},
+  {name:'Francesca',text:'Il mio consiglio? Investi in occhiali da lettura carini, perché il menù del ristorante sta per diventare illeggibile.',time:'2026-04-15T16:00:00'},
 ];
-function getMsgs(){try{return JSON.parse(localStorage.getItem('g40_msgs')||'[]')}catch{return[]}}
-function saveMsgs(m){localStorage.setItem('g40_msgs',JSON.stringify(m))}
+
+// SUPABASE CONFIG
+const SUPABASE_URL='https://sgixsmxdwxkswhwtlpze.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNnaXhzbXhkd3hrc3dod3RscHplIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNjg3MDQsImV4cCI6MjA5MTc0NDcwNH0.hx-ABgmshoZVLb7HsKJ3R_g73e60LKHZK_4GsKOg6mE';
+
+async function supaFetch(path,opts={}){
+  const res=await fetch(SUPABASE_URL+'/rest/v1/'+path,{
+    headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':opts.prefer||''},
+    method:opts.method||'GET',
+    body:opts.body?JSON.stringify(opts.body):undefined
+  });
+  if(!res.ok) return null;
+  const text=await res.text();
+  return text?JSON.parse(text):[];
+}
+
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function fmt(iso){try{const d=new Date(iso);return d.toLocaleDateString('it-IT',{day:'numeric',month:'short'})+' · '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'})}catch{return''}}
-function renderTicker(){
-  const all=[...SEED,...getMsgs()];
-  const inner=document.getElementById('ticker-inner');
-  const cards=all.map(m=>`<div class="ticker-card"><div class="tc-author">${esc(m.name)}</div><div class="tc-text">${esc(m.text)}</div><div class="tc-time">${fmt(m.time)}</div></div>`).join('');
-  inner.innerHTML=cards+cards;
-  inner.style.animationDuration=Math.max(20,all.length*5)+'s';
-}
-function postMessage(){
-  const n=document.getElementById('msg-name').value.trim(),t=document.getElementById('msg-text').value.trim();
-  if(!n||!t)return;const m=getMsgs();m.push({name:n,text:t,time:new Date().toISOString()});saveMsgs(m);renderTicker();
-  document.getElementById('msg-name').value='';document.getElementById('msg-text').value='';
-}
-renderTicker();
 
-// NEWSLETTER
-function subscribeNL(){
-  const e=document.getElementById('nl-email').value.trim();if(!e||!e.includes('@'))return;
-  const s=JSON.parse(localStorage.getItem('g40_subs')||'[]');
-  if(!s.includes(e)){s.push(e);localStorage.setItem('g40_subs',JSON.stringify(s))}
-  document.getElementById('nl-form').style.display='none';document.getElementById('nl-confirmed').style.display='block';
+function renderTicker(dbMsgs){
+  const all=[...SEED,...dbMsgs];
+  const inner=document.getElementById('ticker-inner');
+  const cards=all.map(m=>`<div class="ticker-card"><div class="tc-author">${esc(m.name)}</div><div class="tc-text">${esc(m.text)}</div><div class="tc-time">${fmt(m.created_at||m.time)}</div></div>`).join('');
+  inner.innerHTML=cards+cards;
+  inner.style.animationDuration=Math.max(25,all.length*5)+'s';
+}
+
+async function loadMessages(){
+  const msgs=await supaFetch('consigli?order=created_at.asc');
+  renderTicker(msgs||[]);
+}
+
+async function postMessage(){
+  const n=document.getElementById('msg-name').value.trim();
+  const t=document.getElementById('msg-text').value.trim();
+  if(!n||!t)return;
+  const btn=document.querySelector('.bacheca-form button');
+  btn.textContent='Invio...';btn.disabled=true;
+  await supaFetch('consigli',{method:'POST',body:{name:n,text:t},prefer:'return=minimal'});
+  document.getElementById('msg-name').value='';
+  document.getElementById('msg-text').value='';
+  btn.textContent='Invia consiglio';btn.disabled=false;
+  await loadMessages();
+  showToast('🥂','Consiglio ricevuto!','Grazie! Giulia lo leggerà probabilmente con un bicchiere in mano e gli occhi lucidi. O forse sono solo gli effetti del gin.');
+}
+
+loadMessages();
+setInterval(loadMessages,15000);
+
+// NEWSLETTER — stored in Supabase
+async function subscribeNL(){
+  const e=document.getElementById('nl-email').value.trim();
+  if(!e||!e.includes('@'))return;
+  const btn=document.querySelector('.newsletter-form button');
+  btn.textContent='...';btn.disabled=true;
+  await supaFetch('newsletter',{method:'POST',body:{email:e},prefer:'return=minimal'});
+  document.getElementById('nl-form').style.display='none';
+  document.getElementById('nl-confirmed').style.display='block';
+  btn.textContent='Iscrivimi';btn.disabled=false;
+  showToast('📬','Ora sono cazzi tuoi.','Hai firmato. Non si torna indietro. Riceverai solo due email: una il sabato con il programma, una il lunedì con il resoconto dei danni. Niente spam, promesso. Il resto dei danni li vedrai di persona.');
 }
 
 // NAV MOBILE
